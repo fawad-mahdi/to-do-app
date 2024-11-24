@@ -59,9 +59,9 @@ jobs:
       # Step 3: Build Docker Image
       - name: Build Docker image
         run: |
-          docker build -t <dockerhub-username>/to-do-app .
+          docker build -t fawadmahdi/to-do-app .
 
       # Step 4: Push Docker Image
       - name: Push Docker image
         run: |
-          docker push <dockerhub-username>/to-do-app
+          docker push fawadmahdi/to-do-app
