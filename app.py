@@ -15,18 +15,25 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Database model for a to-do item
+
+
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(100), nullable=False)
     completed = db.Column(db.Boolean, default=False)
 
+
 # Route to display all tasks (HTML)
+
+
 @app.route('/')
 def home():
     tasks = Todo.query.all()
     return render_template('index.html', tasks=tasks)
 
+
 # Route to handle adding a new task
+
 @app.route('/add', methods=['POST'])
 def add_task():
     task_content = request.form.get('task')
@@ -37,7 +44,9 @@ def add_task():
     db.session.commit()
     return redirect(url_for('home'))
 
+
 # Route to handle updating a task
+
 @app.route('/update/<int:task_id>', methods=['POST'])
 def update_task(task_id):
     task = Todo.query.get(task_id)
@@ -50,7 +59,9 @@ def update_task(task_id):
     db.session.commit()
     return redirect(url_for('home'))
 
+
 # Route to mark a task as completed
+
 @app.route('/complete/<int:task_id>', methods=['POST'])
 def complete_task(task_id):
     task = Todo.query.get(task_id)
@@ -60,7 +71,9 @@ def complete_task(task_id):
     db.session.commit()
     return redirect(url_for('home'))
 
+
 # Route to delete a task
+
 @app.route('/delete/<int:task_id>', methods=['POST'])
 def delete_task(task_id):
     task = Todo.query.get(task_id)
@@ -70,7 +83,9 @@ def delete_task(task_id):
     db.session.commit()
     return redirect(url_for('home'))
 
+
 # Main function
+
 if __name__ == '__main__':
     # Ensure database and table exist
     with app.app_context():
