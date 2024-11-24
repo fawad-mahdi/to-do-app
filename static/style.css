@@ -1,0 +1,128 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #007BFF;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 5px 0;
+    color: #555;
+}
+
+.add-task-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-task-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.add-task-form button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.add-task-form button:hover {
+    background: #0056b3;
+}
+
+.task-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.task-card.completed {
+    background: #e8f5e9;
+}
+
+.task-card .task-name {
+    flex-grow: 1;
+    font-size: 1.2em;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button.update-button {
+    background: #ffc107;
+}
+
+button.complete-button {
+    background: #28a745;
+}
+
+button.delete-button {
+    background: #dc3545;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}

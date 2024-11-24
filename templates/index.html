@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>To-Do App</h1>
+            <p>Keep track of your tasks easily.</p>
+        </header>
+
+        <main>
+            <!-- Add Task Form -->
+            <form action="{{ url_for('add_task') }}" method="POST" class="add-task-form">
+                <input type="text" name="task" placeholder="Enter a new task" required>
+                <button type="submit" class="add-button">Add Task</button>
+            </form>
+
+            <!-- Task List -->
+            <section class="task-list">
+                {% for task in tasks %}
+                    <div class="task-card {{ 'completed' if task.completed else '' }}">
+                        <span class="task-name">{{ task.task }}</span>
+                        <div class="task-actions">
+                            <form action="{{ url_for('update_task', task_id=task.id) }}" method="POST" class="update-form">
+                                <input type="text" name="task" value="{{ task.task }}" required>
+                                <button type="submit" class="update-button">Save</button>
+                            </form>
+                            <form action="{{ url_for('complete_task', task_id=task.id) }}" method="POST">
+                                <button type="submit" class="complete-button" {% if task.completed %}disabled{% endif %}>
+                                    {% if task.completed %}✔ Completed{% else %}Complete{% endif %}
+                                </button>
+                            </form>
+                            <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST">
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>
